@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code for Zakiya's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: #f0f6fc;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #c9d1d9;
+            margin-bottom: 20px;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .code-container {
+            flex: 1;
+            min-width: 300px;
+            background: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .code-header {
+            background: #2d2d2d;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #404040;
+        }
+
+        .code-title {
+            font-weight: 600;
+            color: #e6e6e6;
+        }
+
+        .copy-btn {
+            background: #3a3a3a;
+            color: #ffcc66;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .copy-btn:hover {
+            background: #4a4a4a;
+        }
+
+        .code-content {
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        pre {
+            margin: 0;
+        }
+
+        .code-comment {
+            color: #6a9955;
+        }
+
+        .code-keyword {
+            color: #c586c0;
+        }
+
+        .code-class {
+            color: #4ec9b0;
+        }
+
+        .code-method {
+            color: #dcdcaa;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
+
+        .code-annotation {
+            color: #cc7832;
+        }
+
+        .explanation {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .explanation h2 {
+            color: #ff7e5f;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .explanation-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid #ff7e5f;
+        }
+
+        .explanation-item h3 {
+            color: #feb47b;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features {
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #ff7e5f;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #c9d1d9;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Java Portfolio Project</h1>
+            <p class="subtitle">AI-powered portfolio manager for Zakiya Farhath</p>
+        </header>
+
+        <div class="main-content">
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="code-title">PortfolioManager.java</div>
+                    <button class="copy-btn" id="copy-button">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+                <div class="code-content">
+                    <pre><code><span class="code-comment">/**
+ * PortfolioManager - Java application to manage AI projects portfolio
+ * @author Zakiya Farhath
+ * @version 1.0
+ */</span>
+<span class="code-keyword">import</span> java.util.*;
+<span class="code-keyword">import</span> java.time.*;
+
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> <span class="code-class">PortfolioManager</span> {
+    <span class="code-keyword">private</span> List&lt;Project> projects;
+    <span class="code-keyword">private</span> String portfolioName;
+    
+    <span class="code-comment">// Constructor</span>
+    <span class="code-keyword">public</span> <span class="code-class">PortfolioManager</span>(String portfolioName) {
+        <span class="code-keyword">this</span>.portfolioName = portfolioName;
+        <span class="code-keyword">this</span>.projects = <span class="code-keyword">new</span> ArrayList&lt;>();
+    }
+    
+    <span class="code-comment">// Add a new project to the portfolio</span>
+    <span class="code-keyword">public</span> <span class="code-keyword">void</span> <span class="code-method">addProject</span>(String title, String description, String[] technologies, 
+                          LocalDate startDate, LocalDate endDate) {
+        Project newProject = <span class="code-keyword">new</span> Project(title, description, technologies, startDate, endDate);
+        projects.add(newProject);
+        System.out.println(<span class="code-string">"Added project: "</span> + title);
+    }
+    
+    <span class="code-comment">// Display all projects in the portfolio</span>
+    <span class="code-keyword">public</span> <span class="code-keyword">void</span> <span class="code-method">displayProjects</span>() {
+        System.out.println(<span class="code-string">"\n=== "</span> + portfolioName + <span class="code-string">" Portfolio ==="</span>);
+        <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = 0; i < projects.size(); i++) {
+            System.out.println(<span class="code-string">"\nProject #"</span> + (i+1));
+            projects.get(i).displayDetails();
+        }
+    }
+    
+    <span class="code-comment">// Search projects by technology</span>
+    <span class="code-keyword">public</span> List&lt;Project> <span class="code-method">findProjectsByTechnology</span>(String technology) {
+        List&lt;Project> result = <span class="code-keyword">new</span> ArrayList&lt;>();
+        <span class="code-keyword">for</span> (Project project : projects) {
+            <span class="code-keyword">if</span> (project.usesTechnology(technology)) {
+                result.add(project);
+            }
+        }
+        <span class="code-keyword">return</span> result;
+    }
+    
+    <span class="code-comment">// Inner class representing a Project</span>
+    <span class="code-keyword">private</span> <span class="code-keyword">class</span> <span class="code-class">Project</span> {
+        <span class="code-keyword">private</span> String title;
+        <span class="code-keyword">private</span> String description;
+        <span class="code-keyword">private</span> String[] technologies;
+        <span class="code-keyword">private</span> LocalDate startDate;
+        <span class="code-keyword">private</span> LocalDate endDate;
+        
+        <span class="code-keyword">public</span> <span class="code-class">Project</span>(String title, String description, String[] technologies, 
+                       LocalDate startDate, LocalDate endDate) {
+            <span class="code-keyword">this</span>.title = title;
+            <span class="code-keyword">this</span>.description = description;
+            <span class="code-keyword">this</span>.technologies = technologies;
+            <span class="code-keyword">this</span>.startDate = startDate;
+            <span class="code-keyword">this</span>.endDate = endDate;
+        }
+        
+        <span class="code-keyword">public</span> <span class="code-keyword">void</span> <span class="code-method">displayDetails</span>() {
+            System.out.println(<span class="code-string">"Title: "</span> + title);
+            System.out.println(<span class="code-string">"Description: "</span> + description);
+            System.out.println(<span class="code-string">"Technologies: "</span> + String.join(<span class="code-string">", "</span>, technologies));
+            System.out.println(<span class="code-string">"Duration: "</span> + startDate + <span class="code-string">" to "</span> + endDate);
+        }
+        
+        <span class="code-keyword">public</span> <span class="code-keyword">boolean</span> <span class="code-method">usesTechnology</span>(String technology) {
+            <span class="code-keyword">for</span> (String tech : technologies) {
+                <span class="code-keyword">if</span> (tech.equalsIgnoreCase(technology)) {
+                    <span class="code-keyword">return</span> <span class="code-keyword">true</span>;
+                }
+            }
+            <span class="code-keyword">return</span> <span class="code-keyword">false</span>;
+        }
+    }
+    
+    <span class="code-comment">// Main method to demonstrate the portfolio</span>
+    <span class="code-keyword">public</span> <span class="code-keyword">static</span> <span class="code-keyword">void</span> <span class="code-method">main</span>(String[] args) {
+        PortfolioManager portfolio = <span class="code-keyword">new</span> PortfolioManager(<span class="code-string">"Zakiya Farhath - AI Projects"</span>);
+        
+        <span class="code-comment">// Add some AI projects</span>
+        portfolio.addProject(
+            <span class="code-string">"Predictive Analysis Model"</span>,
+            <span class="code-string">"A machine learning model to predict market trends"</span>,
+            <span class="code-keyword">new</span> String[]{<span class="code-string">"Python"</span>, <span class="code-string">"TensorFlow"</span>, <span class="code-string">"scikit-learn"</span>},
+            LocalDate.of(2023, 1, 15),
+            LocalDate.of(2023, 5, 20)
+        );
+        
+        portfolio.addProject(
+            <span class="code-string">"Neural Network for Image Recognition"</span>,
+            <span class="code-string">"Deep learning system capable of identifying objects in images"</span>,
+            <span class="code-keyword">new</span> String[]{<span class="code-string">"Python"</span>, <span class="code-string">"PyTorch"</span>, <span class="code-string">"OpenCV"</span>},
+            LocalDate.of(2023, 3, 10),
+            LocalDate.of(2023, 8, 25)
+        );
+        
+        portfolio.addProject(
+            <span class="code-string">"Natural Language Processing Chatbot"</span>,
+            <span class="code-string">"AI chatbot that understands and responds to human language"</span>,
+            <span class="code-keyword">new</span> String[]{<span class="code-string">"Python"</span>, <span class="code-string">"NLTK"</span>, <span class="code-string">"spaCy"</span>, <span class="code-string">"TensorFlow"</span>},
+            LocalDate.of(2023, 6, 5),
+            LocalDate.now()
+        );
+        
+        <span class="code-comment">// Display all projects</span>
+        portfolio.displayProjects();
+        
+        <span class="code-comment">// Search for projects using Python</span>
+        System.out.println(<span class="code-string">"\n=== Projects using Python ==="</span>);
+        List&lt;Project> pythonProjects = portfolio.findProjectsByTechnology(<span class="code-string">"Python"</span>);
+        <span class="code-keyword">for</span> (Project project : pythonProjects) {
+            project.displayDetails();
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h2>Code Explanation</h2>
+                
+                <div class="explanation-item">
+                    <h3><i class="fas fa-cube"></i> Project Class</h3>
+                    <p>Inner class representing an AI project with attributes like title, description, technologies used, and timeline.</p>
+                </div>
+                
+                <div class="explanation-item">
+                    <h3><i class="fas fa-list"></i> Portfolio Management</h3>
+                    <p>Allows adding projects, displaying all projects, and searching projects by technology.</p>
+                </div>
+                
+                <div class="explanation-item">
+                    <h3><i class="fas fa-search"></i> Technology Search</h3>
+                    <p>Find projects that use a specific technology (e.g., "Python" or "TensorFlow").</p>
+                </div>
+                
+                <div class="explanation-item">
+                    <h3><i class="fas fa-code"></i> Main Method</h3>
+                    <p>Demonstrates the functionality by creating a portfolio and adding sample AI projects.</p>
+                </div>
+                
+                <div class="explanation-item">
+                    <h3><i class="fas fa-calendar"></i> Date Handling</h3>
+                    <p>Uses Java's LocalDate for handling project timelines and durations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2>Key Features of the Portfolio Manager</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Project Organization</h3>
+                    <p>Efficiently manage multiple AI projects with detailed information</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Technology Filtering</h3>
+                    <p>Quickly find projects that use specific technologies or frameworks</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Timeline Tracking</h3>
+                    <p>Monitor project durations and progress over time</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3>Scalable Design</h3>
+                    <p>Easily extendable to include more features and project details</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Java Portfolio Project for Zakiya Farhath | AI Student & Developer</p>
+            <p>This code demonstrates object-oriented programming principles and Java collections framework</p>
+        </footer>
+    </div>
+
+    <script>
+        // Copy button functionality
+        document.getElementById('copy-button').addEventListener('click', function() {
+            const codeContent = document.querySelector('.code-content').textContent;
+            navigator.clipboard.writeText(codeContent).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
